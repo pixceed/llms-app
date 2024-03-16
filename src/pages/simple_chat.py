@@ -2,8 +2,8 @@ import streamlit as st
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
-from ..components.button_right import align_button_right
-from ..components.sidebar import sidebar_view
+from components.button_right import align_button_right
+from components.sidebar import sidebar_view
 
 
 
