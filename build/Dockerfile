@@ -34,9 +34,10 @@ ENV PYTHONUNBUFFERED 1
 # パッケージインストール
 RUN pip install --upgrade pip
 RUN pip install numpy
-RUN pip install openai==1.7.2
-RUN pip install langchain==0.1.0
-RUN pip install langchain_openai==0.0.2.post1
+RUN pip install openai
+RUN pip install langchain
+RUN pip install langchain_openai
+RUN pip install langchain_anthropic
 RUN pip install tiktoken
 RUN pip install chromadb
 RUN pip install faiss-cpu
