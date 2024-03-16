@@ -2,7 +2,7 @@ import shutil
 from pathlib import Path
 import streamlit as st
 
-from src.components.sidebar import sidebar_view
+from components.sidebar import sidebar_view
 
 
 def move_font_files():

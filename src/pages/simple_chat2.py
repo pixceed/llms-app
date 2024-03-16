@@ -16,10 +16,10 @@ from langchain_community.callbacks import get_openai_callback
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 
-from src.components.button_right import align_button_right
-from src.components.sidebar import sidebar_view
+from ..components.button_right import align_button_right
+from ..components.sidebar import sidebar_view
 
-from src.modules.CostCalc import CostCalculateCallbackHandler
+from ..modules.CostCalc import CostCalculateCallbackHandler
 
 # class WrapStreamlitCallbackHandler(StreamlitCallbackHandler):
 #     def on_llm_start(self, serialized: Dict[str, Any], prompts: List[str], **kwargs: Any) -> None:
