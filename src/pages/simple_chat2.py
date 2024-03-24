@@ -100,8 +100,8 @@ def main():
 
     st.set_page_config(layout="wide", page_title="LLMS-APP", page_icon="👾")
     st.write('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
-    with open( "src/style.css" ) as css:
-        st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
+    # with open( "style.css" ) as css:
+    #     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
     def reset():
         st.session_state.messages = []
@@ -125,10 +125,12 @@ def main():
 
         if st.session_state.token_total != {}:
             st.divider()
-            st.write(f"Total Tokens: {st.session_state.token_total['total_tokens']}")
-            st.write(f"Prompt Tokens: {st.session_state.token_total['prompt_tokens']}")
-            st.write(f"Completion Tokens: {st.session_state.token_total['completion_tokens']}")
-            st.write(f"Total Cost (USD): ${st.session_state.token_total['total_cost']:.4f}")
+            st.markdown("### Tokens Result")
+            with st.container(border=True):
+                st.write(f"Total Tokens: {st.session_state.token_total['total_tokens']}")
+                st.write(f"Prompt Tokens: {st.session_state.token_total['prompt_tokens']}")
+                st.write(f"Completion Tokens: {st.session_state.token_total['completion_tokens']}")
+                st.write(f"Total Cost (USD): ${st.session_state.token_total['total_cost']:.4f}")
 
     # st.markdown("<h1 style='text-align: center; color: red;'>Some title</h1>", unsafe_allow_html=True)
     
@@ -140,7 +142,7 @@ def main():
     #     col1, col2 = st.columns([5, 1])
     #     col2.button("新規チャット", on_click=reset)
     col1, col2 = st.columns([2, 1])
-    with col1.chat_message("ai", avatar="👾"):
+    with col1.chat_message("ai"):
         st.markdown("なんでも聞くのだ！")
     col2.markdown(" ")
     col2.button("新規チャット", on_click=reset)
@@ -151,21 +153,21 @@ def main():
 
     for m in st.session_state.messages:
         if m[0] == "ai":
-            with st.chat_message("ai", avatar="👾"):
+            with st.chat_message("ai"):
                 st.markdown(m[1])
         elif m[0] == "user":
-            with st.chat_message("user", avatar="🥹"):
+            with st.chat_message("user"):
                 st.markdown(m[1])
 
     if input_text := st.chat_input("質問をどうぞ"):
 
         st.session_state.messages.append(("user", input_text))
 
-        with st.chat_message("user", avatar="🥹"):
+        with st.chat_message("user"):
             
             st.markdown(input_text)
 
-        with st.chat_message("ai", avatar="👾"):
+        with st.chat_message("ai"):
             
             st_callback = StreamlitCallbackHandler(st.container())
 

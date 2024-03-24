@@ -13,14 +13,14 @@ def move_font_files():
 
     css_file = CSS_PATH / "Nosutaru-dotMPlusH-10-Regular.ttf"
     if not css_file.exists():
-        shutil.copy("src/fonts/Nosutaru-dotMPlusH-10-Regular.ttf", css_file)
+        shutil.copy("fonts/Nosutaru-dotMPlusH-10-Regular.ttf", css_file)
 
 def main():
     # move_font_files()
     st.set_page_config(layout='wide', page_title="LLMS-APP", page_icon="👾")
     st.write('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
-    with open( "src/style.css" ) as css:
-        st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
+    # with open( "style.css" ) as css:
+    #     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
 
     sidebar_view()
